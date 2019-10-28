@@ -1,0 +1,39 @@
+
+<div class="recipe" *ngIf="recipe">
+    <div class="recipe__header">
+      <button class="btn btn-fancy" [routerLink]="['/сategories']">Назад</button>
+      <h2 class="recipe__title"
+      >{{recipe.title}}</h2>
+      <button class="btn btn-fancy" [routerLink]="['/сategories']">Закрыть</button>
+    </div>
+    <div class="recipe__controls">
+      <div>
+      </div>
+      <div class="recipe__progress">
+        <div
+        class="recipe__progress-item"
+        *ngFor="let step of recipe.steps; let i = index"
+        [ngClass]="{'active': i === currentStep}"
+        (click)="chooseStep(i)"
+        >{{i + 1}}</div>
+      </div>
+    </div>
+    <div class="recipe__slide-content">
+      <div class="recipe__holder">
+        <div  class="recipe__image-wrapper">
+          <img
+            class="recipe__image"
+            [src]="currentStepData.imgPath"
+            >
+        </div>
+        <div class="recipe__slide-btn left" [ngClass]="{'disabled': currentStep < 1}"  (click)="backStep()">
+            <i class="icon arrow-left"></i>
+          </div>
+          <div class="recipe__slide-btn right" [ngClass]="{'disabled': currentStep >= (recipe.steps.length -1)}"  (click)="nextStep()">
+            <i class="icon arrow-right"></i>
+          </div>
+      </div>
+
+        <p class="recipe__text">{{currentStepData.text}}</p>
+    </div>
+  </div>

@@ -1,0 +1,17 @@
+<div class="recipe-list">
+  <div class="recipe-list__header">
+    <button class="btn" [routerLink]="['/сategories']">Назад</button>
+    <h2 class="recipe-list__title">Салаты</h2>
+  </div>
+  <div class="recipe-list__content">
+      <div class="recipe-list__item"
+      *ngFor="let item of recipes"
+      [routerLink]="['/recipe']"
+      [queryParams]="{recipe: item.name}">
+      <div class="recipe-list__img-wrapper">
+        <img  class="recipe-list__img" [src]="item.image">
+      </div>
+      <h2 class="recipe-list__sub-title">{{item.title}}</h2>
+    </div>
+  </div>
+</div>

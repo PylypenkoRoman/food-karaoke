@@ -1,0 +1,16 @@
+<div class="categories">
+  <!-- <div class="categories__list">
+
+  </div> -->
+  <div class="categories__item"
+    *ngFor="let item of categories"
+    [routerLink]="['/recipe-list']"
+    [queryParams]="{category: item.name}">
+    <div class="categories__holder">
+      <div class="categories__img-wrapper">
+        <img  class="categories__img" [src]="'../../../../../assets/icons/' + item.name + '.png'">
+      </div>
+      <h2 class="categories__sub-title">{{item.title}}</h2>
+    </div>
+  </div>
+</div>
